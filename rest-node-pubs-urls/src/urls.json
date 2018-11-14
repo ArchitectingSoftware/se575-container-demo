@@ -1,0 +1,72 @@
+[
+    {
+        "key" : "TSE06",
+        "type": "JOURNAL",
+        "url": "https://www.computer.org/csdl/trans/ts/2006/03/index.html"
+    },
+    {
+        "key" : "JSC07",
+        "type": "JOURNAL",
+        "url": "https://link.springer.com/article/10.1007/s00500-007-0218-3"
+    },
+    {
+        "key" : "GECCO04",
+        "type": "CONFERENCE",
+        "url": "http://www.sigevo.org/gecco-2004/"
+    },
+    {
+        "key" : "IEE03",
+        "type": "JOURNAL",
+        "url": "https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=27313&punumber=5658"
+    },
+    {
+        "key" : "ICSM03",
+        "type": "CONFERENCE",
+        "url": "https://www.computer.org/csdl/proceedings/icsm/2003/1905/00/index.html"
+    },
+    {
+        "key" : "GECCO03",
+        "type": "CONFERENCE",
+        "url": "http://www.sigevo.org/gecco-2003/"
+    },
+    {
+        "key" : "SEKE02",
+        "type": "CONFERENCE",
+        "url": "https://dl.acm.org/citation.cfm?doid=568760.568835"
+    },
+    {
+        "key" : "GECCO02",
+        "type": "CONFERENCE",
+        "url": "http://www.sigevo.org/gecco-2002/"
+    },
+    {
+        "key" : "ICSM01",
+        "type": "CONFERENCE",
+        "url": "https://ieeexplore.ieee.org/document/972697"
+    },
+    {
+        "key" : "WCRE01",
+        "type": "CONFERENCE",
+        "url": "https://dl.acm.org/citation.cfm?id=832308&picked=prox"
+    },
+    {
+        "key" : "WCSA01",
+        "type": "CONFERENCE",
+        "url": "https://dblp.org/db/conf/wicsa/wicsa2001.html"
+    },
+    {
+        "key" : "ICSM99",
+        "type": "CONFERENCE",
+        "url": "https://www.computer.org/csdl/proceedings/icsm/1999/0016/00/index.html"
+    },
+    {
+        "key" : "STEP99",
+        "type": "CONFERENCE",
+        "url": "https://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=6497"
+    },
+    {
+        "key" : "IWPC98",
+        "type": "CONFERENCE",
+        "url": "https://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=5650"
+    }
+]

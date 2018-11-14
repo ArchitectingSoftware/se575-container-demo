@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pubs-service-deployment
+  labels:
+    app: pubs-svc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pubs-svc
+  template:
+    metadata:
+      labels:
+        app: pubs-svc
+    spec:
+      containers:
+      - name: pubs-svc
+        image: architecting-software/node-pubs-service:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 9205

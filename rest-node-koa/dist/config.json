@@ -1,0 +1,16 @@
+{
+    "development": {
+        "config_id": "development",
+        "code_host": "localhost",
+        "code_port": 8090,
+        "local_host": "0.0.0.0",
+        "local_port": 8080
+    },
+    "k8s": {
+        "config_id": "container",
+        "code_host": "pubs-url-svc-service",
+        "code_port": 8080,
+        "local_host": "0.0.0.0",
+        "local_port": 8080
+    }
+}

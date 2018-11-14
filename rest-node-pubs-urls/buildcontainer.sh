@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t architecting-software/node-pubs-service .
+docker build -t architecting-software/node-pubs-url-service .

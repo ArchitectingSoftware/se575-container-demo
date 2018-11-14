@@ -1,0 +1,13 @@
+{
+    "development" : {
+        "config_id" : "development",
+        "code_host" : "localhost",
+        "local_host" : "0.0.0.0",
+        "local_port" : 8090
+    },
+    "k8s" : {
+        "config_id" : "container",
+        "local_host" : "0.0.0.0",
+        "local_port" : 8080
+    }
+}

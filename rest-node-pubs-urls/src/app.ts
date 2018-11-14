@@ -2,6 +2,7 @@ import * as Koa from 'koa'
 import * as Router from 'koa-router'
 import * as loki from 'lokijs';
 import * as pubsUrls from './urls.json'
+import * as config from './config.json'
 
 let app = new Koa();
 let router = new Router();
@@ -9,6 +10,9 @@ let router = new Router();
 //setup host and port optionally via the environment
 const NODE_PORT = +process.env.PORT || 9100;
 const NODE_HOST = process.env.HOST || '0.0.0.0';
+
+const environment = process.env.NODE_ENV || 'development'
+const envConfig = config[environment]
 
 interface IUrls{
     key: string
@@ -37,6 +41,6 @@ router.get('/url/:pubKey', async http => {
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-app.listen(NODE_PORT);
-console.log('Server started on port', NODE_PORT)
+app.listen(envConfig.local_port);
+console.log('Server started on port', envConfig.local_port)
 

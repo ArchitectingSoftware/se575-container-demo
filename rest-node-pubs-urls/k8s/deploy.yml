@@ -2,37 +2,37 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: pubs-svc-service
+  name: pubs-url-svc-service
 spec:
   type: NodePort
   selector:
-    app: pubs-svc
+    app: pubs-url-svc
   ports:
   - protocol: TCP
     port: 8080
     targetPort: 8080
-    nodePort: 30501
+    nodePort: 30502
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pubs-service-deployment
+  name: pubs-url-service-deployment
   labels:
-    app: pubs-svc
+    app: pubs-url-svc
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: pubs-svc
+      app: pubs-url-svc
   template:
     metadata:
       labels:
-        app: pubs-svc
+        app: pubs-url-svc
     spec:
       containers:
-      - name: pubs-svc
-        image: architecting-software/node-pubs-service:latest
+      - name: pubs-url-svc
+        image: architecting-software/node-pubs-url-service:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 8080

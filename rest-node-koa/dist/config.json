@@ -7,7 +7,7 @@
         "local_port": 8080
     },
     "k8s": {
-        "config_id": "container",
+        "config_id": "k8s-container",
         "code_host": "pubs-url-svc-service",
         "code_port": 8080,
         "local_host": "0.0.0.0",

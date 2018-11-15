@@ -33,6 +33,9 @@ spec:
       containers:
       - name: pubs-url-svc
         image: architecting-software/node-pubs-url-service:latest
+        env:
+          - name: NODE_ENV
+            value: k8s
         imagePullPolicy: Never
         ports:
         - containerPort: 8080

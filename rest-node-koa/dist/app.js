@@ -15,14 +15,23 @@ const axios_1 = require("axios");
 const config = require("./config.json");
 let app = new Koa();
 let router = new Router();
-//setup host and port optionally via the environment
-const NODE_PORT = process.env.PORT || 8080;
-const NODE_HOST = process.env.HOST || '0.0.0.0';
+// Environmental Setup
 const environment = process.env.NODE_ENV || 'development';
-const envConfig = config[environment];
+let envConfig = config[environment.toLowerCase()];
+if (!envConfig) {
+    let msg = "Cant find the desired configuration for environment variable NODE_ENV " +
+        "that is currently set to " + process.env.NODE_ENV + " using environment " +
+        "for development as default.  If you think this might be incorrect please " +
+        "check and likely adjust the config.json file.";
+    console.log(msg);
+    envConfig = config['development'];
+}
+console.log('Using this configuration: ', envConfig);
+//Get all publications from the PaperDB object
 router.get('/publications', (http) => __awaiter(this, void 0, void 0, function* () {
     http.response.body = paperDB_1.PaperDB;
 }));
+//Filter on the PaperDB object by paper id
 router.get('/publications/:id', (http) => __awaiter(this, void 0, void 0, function* () {
     let id = http.params['id'];
     //http.response.body = http.params['id']
@@ -32,6 +41,8 @@ router.get('/publications/:id', (http) => __awaiter(this, void 0, void 0, functi
     else
         http.response.ctx.throw(404);
 }));
+//Get data from a remote (micro)service using the Axios http client. This client
+//return a promise thus the await on the caller side. 
 function getRemoteUrlData(url) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -44,18 +55,24 @@ function getRemoteUrlData(url) {
         }
     });
 }
+//Get a particular paper by its id and enrich with location information
 router.get('/publications/:id/location', (http) => __awaiter(this, void 0, void 0, function* () {
     let id = http.params['id'];
+    //adding an optional location_details option that is provided from a 
+    //companion service
     let paper = paperDB_1.PaperDB.find(p => p.id == id);
     if (paper) {
         const remoteUrl = "http://" + envConfig.code_host + ":" + envConfig.code_port + "/url/" + paper.code;
         let rData = yield getRemoteUrlData(remoteUrl);
-        paper.meta = rData;
+        if (rData)
+            paper.location_details = rData;
         http.response.body = paper;
     }
     else
         http.response.ctx.throw(404);
 }));
+//Now setup the internal middleware and listen for connections on target
+//port based on the configuration 
 app.use(router.routes());
 app.use(router.allowedMethods());
 app.listen(envConfig.local_port);

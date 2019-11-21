@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -28,11 +29,11 @@ if (!envConfig) {
 }
 console.log('Using this configuration: ', envConfig);
 //Get all publications from the PaperDB object
-router.get('/publications', (http) => __awaiter(this, void 0, void 0, function* () {
+router.get('/publications', (http) => __awaiter(void 0, void 0, void 0, function* () {
     http.response.body = paperDB_1.PaperDB;
 }));
 //Filter on the PaperDB object by paper id
-router.get('/publications/:id', (http) => __awaiter(this, void 0, void 0, function* () {
+router.get('/publications/:id', (http) => __awaiter(void 0, void 0, void 0, function* () {
     let id = http.params['id'];
     //http.response.body = http.params['id']
     let paper = paperDB_1.PaperDB.find(p => p.id == id);
@@ -56,7 +57,7 @@ function getRemoteUrlData(url) {
     });
 }
 //Get a particular paper by its id and enrich with location information
-router.get('/publications/:id/location', (http) => __awaiter(this, void 0, void 0, function* () {
+router.get('/publications/:id/location', (http) => __awaiter(void 0, void 0, void 0, function* () {
     let id = http.params['id'];
     //adding an optional location_details option that is provided from a 
     //companion service
